@@ -18,11 +18,12 @@
 	</div>
 </template>
 <script>
-import Userheader from '../Userheader.vue';
-import Userfooter from '../Userfooter.vue';
-import Scrollmenu1 from './Scrollmenu1.vue';
-import Scrollmenu2 from './Scrollmenu2.vue';
+import Userheader from './Userheader.vue';
+import Userfooter from './Userfooter.vue';
+import Scrollmenu1 from './examples/Scrollmenu1.vue';
+import Scrollmenu2 from './examples/Scrollmenu2.vue';
 export default{
+	name:'Useractive',
 	components:{Userheader,Userfooter,Scrollmenu1,Scrollmenu2},
 	data(){
 		return {

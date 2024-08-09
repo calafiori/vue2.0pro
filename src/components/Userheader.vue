@@ -22,7 +22,7 @@ import Header1 from "./Header1.vue";
 import Header2 from "./Header2.vue";
 export default {
   name: "UserHeader",
-  components: { Header1,Header2},
+  components: { Header1, Header2 },
   data() {
     return {
       inputs: "",
@@ -33,12 +33,12 @@ export default {
       sizeList: ["medium"],
     };
   },
-  methods: {},
+  methods: {}
 };
 </script>
 <style scoped>
-@media screen and (min-width: 1024px){
-    .headerp {
+@media screen and (min-width: 1024px) {
+  .headerp {
     width: 60%;
     height: 130px;
     background: #fff;
@@ -46,15 +46,15 @@ export default {
     z-index: 99;
   }
 }
-@media screen and (max-width: 768px){
-	.headerp {
+@media screen and (max-width: 768px) {
+  .headerp {
+    color: white;
     width: 100%;
     height: 130px;
-    background: #fff;
     position: fixed;
     z-index: 99;
+    background: linear-gradient(90deg, #0975f9, #22a8f5, #0dd4f8);
   }
 }
-
 </style>
   

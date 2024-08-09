@@ -50,7 +50,7 @@ export default {
 	.headerp {
     width: 100%;
     height: 130px;
-    background: #fff;
+    background: linear-gradient(90deg, #0975f9, #22a8f5, #0dd4f8);
     position: fixed;
     z-index: 99;
   }

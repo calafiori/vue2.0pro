@@ -3,7 +3,7 @@
 		<!-- <i class="el-icon-s-home" :style="{color:color1}"></i> -->
 		<router-link to="/"><i class="el-icon-s-home initcolor" style="margin-left: 5px;"></i> </router-link>
 		<router-link to="cardlist"><i class="el-icon-bank-card initcolor"></i></router-link>
-		<router-link to="playvideo"><i class="el-icon-chat-line-round initcolor"></i></router-link>
+		<router-link to="useractive"><i class="el-icon-chat-line-round initcolor"></i></router-link>
 		<router-link to="userinfo"><i class="el-icon-s-custom initcolor"></i></router-link>
 	</div>
 </template>
@@ -35,7 +35,7 @@
 		bottom: 0px;
 		z-index: 999;
 		width: 99%;
-		background: #fff;
+		background: linear-gradient(90deg, #0975f9, #22a8f5, #0dd4f8);
 	}
 }
 /* .userfooter{
@@ -52,7 +52,8 @@
 	z-index: 2;
 }
 .initcolor{
-	color:#010000;
+	/* color:#010000; */
+	color:white;
 }
 
 </style>

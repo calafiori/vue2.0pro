@@ -5,7 +5,7 @@ import App from './App'
 import router from './router'
 import plugins from './plugins'
 // import { Dialog,Picker } from '@nutui/nutui';
-import {Dialog,InfiniteScroll,CollapseItem,Collapse,TableColumn,Table,Link,Result,Menu,MenuItem,Submenu,RadioButton,Backtop,PageHeader,Rate,Image,Card,SkeletonItem,skeleton,avatar,Radio,RadioGroup,Checkbox,CheckboxGroup,Switch,Form,TimePicker,DatePicker,Option,Input,FormItem,main,aside,Col,Avatar,Header,Container, Button, Select ,Row,Carousel,CarouselItem} from 'element-ui';
+import {Drawer,TabPane,Tabs,Dialog,InfiniteScroll,CollapseItem,Collapse,TableColumn,Table,Link,Result,Menu,MenuItem,Submenu,RadioButton,Backtop,PageHeader,Rate,Image,Card,SkeletonItem,skeleton,avatar,Radio,RadioGroup,Checkbox,CheckboxGroup,Switch,Form,TimePicker,DatePicker,Option,Input,FormItem,main,aside,Col,Avatar,Header,Container, Button, Select ,Row,Carousel,CarouselItem} from 'element-ui';
 //import ElementUI from 'element-ui';
 //import 'element-ui/lib/theme-chalk/index.css';
 import NutUI from '@nutui/nutui';
@@ -14,9 +14,12 @@ import '@nutui/nutui/dist/nutui.css';
 // import "@nutui/nutui-cat/dist/nutui-cat.css";
 Vue.config.productionTip = false
 Vue.use(plugins)
+Vue.use(TabPane)
 //Vue.use(ElementUI)
 Vue.use(InfiniteScroll)
+Vue.use(Drawer)
 Vue.use(Button)
+Vue.use(Tabs)
 Vue.use(Select)
 Vue.use(Dialog)
 Vue.use(Menu)

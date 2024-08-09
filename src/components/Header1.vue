@@ -1,5 +1,5 @@
 <template>
-			<div>
+			<div class="color:white;">
 				<ul style="width:20%">
 					<div style="margin: auto;font-size: 30px;line-height: 60px;margin-left: 8px;">
 						<i @click="goBack" class="el-icon-arrow-left"></i>
@@ -13,7 +13,7 @@
 				</ul>
 				<ul style="width:20%">
 					<div style="font-size: 30px;text-align:right;line-height: 50px;">
-						<i class="el-icon-user"></i>&nbsp;
+						<i @click="loadtologin" class="el-icon-user"></i>&nbsp;
 					</div>
 				</ul>
 			</div>	
@@ -22,6 +22,9 @@
 	export default{
 		name:'Header1',
 		methods:{
+			loadtologin(){
+				this.$router.push('/userregister')
+			},
 			goBack() {
 				console.log('go back');
 				this.$router.go(-1)

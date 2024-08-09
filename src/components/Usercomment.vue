@@ -1,14 +1,7 @@
 <template>
 	<div class="usrcomment" >
 		<br/>
-		<div class="comboxheader" style="">
-			<div class="comboxheader_d1" style=""><center><textarea style="" ></textarea></center></div>
-			<div class="comboxheader_d2" style="">
-				<div style="background-color: #9FABA5;">取消发送</div>
-				<div style="background-color:#00FF00">确认发送</div>
-			</div>
-			<div style="float: left;width: 100%;"></div>
-		</div>
+		<center><h3>请友善发表评论！禁止不良信息。</h3></center>
 		<div class="infinite-list combox1" v-infinite-scroll="load">
 			<el-collapse>
 				<el-collapse-item v-for="(comment,index) in commentData" :key="index" style="">
@@ -25,7 +18,7 @@
 									{{comment.comment}}
 								</div>
 								<div style="">
-									<span>安徽网友</span>&nbsp;&nbsp;|&nbsp;&nbsp;<span>2012.11.23</span>&nbsp;&nbsp;|&nbsp;&nbsp;<span v-on:click.stop.prevent="replymessage(2)">回复</span>>
+									<span>安徽网友</span>&nbsp;&nbsp;|&nbsp;&nbsp;<span>2012.11.23</span>&nbsp;&nbsp;|&nbsp;&nbsp;<span v-on:click.stop.prevent="replymessage(comment)">回复</span>>
 								</div>
 							</div>
 						</div>
@@ -43,30 +36,64 @@
 										{{c.comment}}
 									</div>
 									<div style="">
-										<span>安徽网友</span>&nbsp;&nbsp;|&nbsp;&nbsp;<span>2012.11.23</span>&nbsp;&nbsp;|&nbsp;&nbsp;<span @click="replymessage(2)">回复</span>>
+										<span>安徽网友</span>&nbsp;&nbsp;|&nbsp;&nbsp;<span>2012.11.23</span>&nbsp;&nbsp;|&nbsp;&nbsp;<span @click="replymessage(c)">回复</span>>
 									</div>
 						</div>	
 					</div>
-					
-						
-					<!-- <div v-for="(c,i) in comment.replays" :key="i" style="width: 80%;float: left;"></div> -->
-						
+					<!-- <div v-for="(c,i) in comment.replays" :key="i" style="width: 80%;float: left;"></div> -->	
 				</el-collapse-item>
 			</el-collapse>	
 		</div>
-		<Comment3 />
+		<!-- <div class="comboxheader" style="">
+			<div class="comboxheader_d1" style=""><center><textarea style="" ></textarea></center></div>
+			<div class="comboxheader_d2" style="">
+				<div style="background-color: #9FABA5;">取消发送</div>
+				<div style="background-color:#00FF00">确认发送</div>
+			</div>
+			<div style="float: left;width: 100%;"></div>
+		</div> -->
+		<!-- <Comment3 :c3obj="c3obj"/> -->
+		<div>
+			<div class="comment_b1">
+						<div @click="writeComment" style="font-size:10px;line-height: 30px;text-align:center;background-color:aliceblue;border-radius:30%;width: 35%;height: 25px;float: left;padding:2px;margin-left: 10px;">
+							发评论
+						</div>
+						<div><i class="el-icon-edit"></i></div>
+						<div><i class="el-icon-present"></i></div>
+						<div><i class="el-icon-star-on"></i></div>
+						<div><i class="el-icon-s-finance"></i></div>
+			</div>
+			<!-- :show-close = false -->
+			<el-drawer
+					style="font-size: 10px;"
+					:title="to_reply_info"
+					:visible.sync="drawer"
+					:direction="direction"	
+					:show-close = false>
+					<div class="comboxheader" style="">
+						<div class="comboxheader_d1" style=""><center><textarea v-model="textarea" style="" ></textarea></center></div>
+						<div class="comboxheader_d2" style="">
+							<div @click="drawer=false" style="background-color: #9FABA5;">关闭</div>
+							<div @click="sendReply" style="background: linear-gradient(90deg, #0dd4f8, #22a8f5, #0dd4f8);">确认发送</div>
+						</div>
+						<div style="float: left;width: 100%;"></div>
+					</div>
+			</el-drawer>
+		</div>
 	</div>
 
 </template>
 <script>
-  import Comment3 from './Comment3.vue';
   export default {
 	name:'Usercommnet',
-	components: { Comment3},
     data() {
       return {
+		to_reply_info:'',
+		to_reply_name:'',
+		to_replay_comment:'',
+		direction:'btt',
 		bshow:true,
-		dialogVisible:false,
+		drawer: false,
 		count: 0,
 		textarea: '',
         activeNames: ['1'],
@@ -455,14 +482,23 @@
       };
     },
     methods: {
+		sendReply(){
+			if (!this.textarea.trim()) return alert('input not alone null!');
+			console.log(this.textarea)
+		},
+		closeComment(){
+				this.bshow = true
+				this.dialogVisible = false
+			},
+		writeComment(){
+				console.log(3333)
+				this.textarea = ''
+				this.to_reply_info = ''
+				this.drawer = !this.drawer
+		},
 		closeComment(){
 			this.bshow = true
 			this.dialogVisible = false
-		},
-		writeComment(){
-			this.textarea = ''
-			this.bshow = false
-			this.dialogVisible = true
 		},
 		handleClose(done) {
 			this.dialogVisible = false
@@ -470,10 +506,10 @@
 		load(){
 
 		},
-		replymessage(id){
-			console.log(id)
-			this.textarea = ''
-			this.dialogVisible = true
+		replymessage(v){
+			this.drawer = !this.drawer
+			console.log(v)
+			this.to_reply_info ="回复：" + v.name +":"+v.comment
 		},
 		handleChange(val) {
 			console.log(val);
@@ -483,12 +519,26 @@
 </script>
 <style scoped> 
 @media screen and (max-width: 768px){
+	
+	.comment_b1{
+		display: block;
+		position:fixed;
+		bottom:0;
+		width:100%;
+		height: 30px;
+		background: #fff;
+		z-index: 999;
+	}
+	.comment_b1 div{
+		text-align:center;line-height: 30px;float: left;width: 12%;font-size: 23px;
+	}
 	.comboxheader{
+		background: linear-gradient(90deg, #0dd4f8, #22a8f5, #0dd4f8);
 		background: #DCD0E3;
 		width: 95%;
 		margin: auto;
-		height:100px;
-		border-radius: 5%;
+		height:120px;
+		border-radius: 3%;
 	}
 	.comboxheader_d1{
 		margin-top:10px;
@@ -517,16 +567,16 @@
 		border-radius: 15%;
 	}
 	.comboxheader_d1 textarea{
-		width: 85%;height: 50px;resize: none;border-radius: 3%;
+		width: 85%;height: 60px;resize: none;border-radius: 3%;margin-top: 10px;
 	}
 	.combox1{
 		overflow:auto;
-		height:400px;
+		/* height:500px; */
 		border: 1px solid #DCD0E3;
 		z-index: 888;
 		width: 95%;
 		margin: auto;
-		margin-top:20px;
+		margin-top:10px;
 	}
 	.combox2{
 		width: 99%;

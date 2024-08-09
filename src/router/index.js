@@ -9,6 +9,7 @@ import Userregister from '@/components/Userregister'
 import Userinfo from '../components/Userinfo'
 import Address from '@/components/Address'
 import Usercomment from '../components/Usercomment'
+import Useractive from '@/components/Useractive.vue'
 import Demo1 from '../components/examples/Demo1.vue'
 export default new Router({
   routes: [
@@ -21,6 +22,11 @@ export default new Router({
       path: '/usercomment',
       name: 'usercomment',
       component: Usercomment
+    } ,
+    {
+      path: '/useractive',
+      name: 'useractive',
+      component: Useractive
     } ,
     {
       path: '/demo1',

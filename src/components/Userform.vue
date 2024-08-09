@@ -1,12 +1,12 @@
 <template>
   <div>
-    <el-image style="width: 100%;height: 150px;" :src="src"></el-image><br/><br/>
+    <el-image style="width: 100%;height: 150px;" ></el-image><br/><br/>
     
     <el-form ref="form" :model="form" label-width="80px">
-			<el-form-item label="登陆账号">
+			<el-form-item label="登陆账号" style="width: 80%;">
 			<el-input v-model="form.useraccount"></el-input>
 			</el-form-item>
-			<el-form-item label="邮箱">
+			<el-form-item label="邮箱" style="width: 80%;">
 			<el-input v-model="form.email" style="width: 60%;"></el-input>
 			<el-select v-model="value" style="width: 35%;" placeholder="请选择">
 			<el-option
@@ -21,10 +21,10 @@
 				<el-input v-model="form.emailyzm" style="width: 200px;"></el-input>
 				<el-button style="width:100px;font-size: 12px;" round @click="getCode">{{showcodebutton}}</el-button>
 			</el-form-item>
-			<el-form-item label="登陆密码">
+			<el-form-item label="登陆密码" style="width: 80%;">
 				<el-input v-model="form.userpwd"></el-input>
 			</el-form-item>
-			<el-form-item label="确认密码">
+			<el-form-item label="确认密码" style="width: 80%;">
 				<el-input v-model="form.confirmuserpwd"></el-input>
 			</el-form-item>
 			<el-form-item>
